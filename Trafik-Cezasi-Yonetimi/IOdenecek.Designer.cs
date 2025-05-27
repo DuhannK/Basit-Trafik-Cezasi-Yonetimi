@@ -1,6 +1,6 @@
 ﻿namespace Trafik_Cezasi_Yonetimi
 {
-    partial class Form1
+    partial class IOdenecek
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.

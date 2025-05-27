@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Trafik_Cezasi_Yonetimi
 {
-    public partial class Form1 : Form
+    public partial class IOdenecek : Form
     {
-        public Form1()
+        public IOdenecek()
         {
             InitializeComponent();
         }
     }
 }
+
+
