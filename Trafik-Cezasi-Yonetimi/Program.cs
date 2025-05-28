@@ -16,7 +16,7 @@ namespace Trafik_Cezasi_Yonetimi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IOdenecek());
+            Application.Run(new IOdenecekArayuz());
         }
     }
 }

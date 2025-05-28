@@ -46,16 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOdenecek.cs">
+    <Compile Include="IOdenecek.cs" />
+    <Compile Include="Sınıf Dosyaları\Ceza.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IOdenecek.Designer.cs">
-      <DependentUpon>IOdenecek.cs</DependentUpon>
+    <Compile Include="Sınıf Dosyaları\HizCeza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IOdenecekArayuz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IOdenecekArayuz.Designer.cs">
+      <DependentUpon>IOdenecekArayuz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sınıf Dosyaları\KirmiziIsikCeza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sınıf Dosyaları\ParkCeza.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IOdenecek.resx">
-      <DependentUpon>IOdenecek.cs</DependentUpon>
+    <Compile Include="Sınıf Dosyaları\Surucu.cs" />
+    <EmbeddedResource Include="IOdenecekArayuz.resx">
+      <DependentUpon>IOdenecekArayuz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
