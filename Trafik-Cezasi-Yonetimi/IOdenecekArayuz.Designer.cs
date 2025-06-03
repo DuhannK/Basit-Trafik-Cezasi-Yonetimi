@@ -83,10 +83,6 @@
             // ceza_seçenek_seçimi
             // 
             this.ceza_seçenek_seçimi.FormattingEnabled = true;
-            this.ceza_seçenek_seçimi.Items.AddRange(new object[] {
-            "Hız",
-            "Park",
-            "Kırmızı Işık"});
             this.ceza_seçenek_seçimi.Location = new System.Drawing.Point(296, 209);
             this.ceza_seçenek_seçimi.Name = "ceza_seçenek_seçimi";
             this.ceza_seçenek_seçimi.Size = new System.Drawing.Size(217, 24);

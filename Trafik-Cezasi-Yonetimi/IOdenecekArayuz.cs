@@ -39,8 +39,17 @@ namespace Trafik_Cezasi_Yonetimi
             if (seciliSurucu == null) return;
 
             string cezaTuru = ceza_seçenek_seçimi.SelectedItem?.ToString();
-            decimal tutar = 0;
-            decimal.TryParse(ceza_tutarı_girişi.Text, out tutar);
+            if (cezaTuru == null || cezaTuru == "Ceza Türü Seçin") // 💡 Kontrol burada
+            {
+                MessageBox.Show("Lütfen geçerli bir ceza türü seçin.");
+                return;
+            }
+
+            if (!decimal.TryParse(ceza_tutarı_girişi.Text, out decimal tutar) || tutar <= 0)
+            {
+                MessageBox.Show("Geçerli bir ceza tutarı girin.");
+                return;
+            }
 
             Ceza yeniCeza = null;
             if (cezaTuru == "Hız")
@@ -53,11 +62,11 @@ namespace Trafik_Cezasi_Yonetimi
             if (yeniCeza != null)
             {
                 seciliSurucu.Cezalar.Add(yeniCeza);
-                // Listeyi yenile
-                sürücüler_liste_SelectedIndexChanged(null, null);
+                sürücüler_liste_SelectedIndexChanged(null, null); // Listeyi yenile
                 ceza_tutarı_girişi.Clear();
             }
         }
+
 
         private void ceza_öde_Click(object sender, EventArgs e)
         {
@@ -100,7 +109,11 @@ namespace Trafik_Cezasi_Yonetimi
 
         private void ceza_seçenek_seçimi_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ceza_seçenek_seçimi.SelectedIndex == -1)
+            {
+                ceza_seçenek_seçimi.Items.Insert(0, "Ceza Türü Seçin");
+                ceza_seçenek_seçimi.SelectedIndex = 0;
+            }
         }
 
         private void ceza_tutarı_girişi_TextChanged(object sender, EventArgs e)
@@ -121,12 +134,29 @@ namespace Trafik_Cezasi_Yonetimi
         private void IOdenecekArayuz_Load(object sender, EventArgs e)
         {
 
+            ceza_seçenek_seçimi.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            ceza_seçenek_seçimi.Items.Clear();
+            ceza_seçenek_seçimi.Items.Add("Ceza Türü Seçin"); // Rehber yazı
+            ceza_seçenek_seçimi.Items.Add("Kırmızı Işık");
+            ceza_seçenek_seçimi.Items.Add("Hız");
+            ceza_seçenek_seçimi.Items.Add("Park");
+
+            ceza_seçenek_seçimi.SelectedIndex = 0;
         }
 
         private void toplam_borç_Click(object sender, EventArgs e)
         {
 
         }
+        private void ceza_seçenek_seçimi_DropDown(object sender, EventArgs e)
+        {
+            if (ceza_seçenek_seçimi.Items.Contains("Ceza Türü Seçin"))
+            {
+                ceza_seçenek_seçimi.Items.Remove("Ceza Türü Seçin");
+            }
+        }
+
     }
 }
 
