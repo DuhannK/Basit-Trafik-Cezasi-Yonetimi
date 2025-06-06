@@ -5,3 +5,5 @@
         void OdemeYap();
     }
 }
+
+// Yapılacak metodları implament etmek için buraya metdolar yazılacak!

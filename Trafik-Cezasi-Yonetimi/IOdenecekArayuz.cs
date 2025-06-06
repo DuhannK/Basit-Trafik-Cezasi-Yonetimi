@@ -13,13 +13,64 @@ namespace Trafik_Cezasi_Yonetimi
 
     public partial class IOdenecekArayuz : Form
     {
-        // Sınıf Listesi burada!
         List<Surucu> suruculer = new List<Surucu>();
+
+
 
         public IOdenecekArayuz()
         {
             InitializeComponent();
+            sürücü_adı_girişi.Text = "Ad Soyad";
+            sürücü_adı_girişi.ForeColor = Color.Black;
+
+            ceza_tutarı_girişi.Text = "Ceza Tutarı Giriniz";
+            ceza_tutarı_girişi.ForeColor = Color.Black;
+
+            ceza_seçenek_seçimi.Items.Clear();
+            ceza_seçenek_seçimi.Items.Add("Ceza Türünü Seçin");
+            ceza_seçenek_seçimi.Items.Add("Hız");
+            ceza_seçenek_seçimi.Items.Add("Park");
+            ceza_seçenek_seçimi.Items.Add("Kırmızı Işık");
+            ceza_seçenek_seçimi.SelectedIndex = 0; // İlk olarak placeholder gözüksün
+
         }
+        private void sürücü_adı_girişi_Enter(object sender, EventArgs e)
+        {
+            if (sürücü_adı_girişi.Text == "Ad Soyad")
+            {
+                sürücü_adı_girişi.Text = "";
+                sürücü_adı_girişi.ForeColor = Color.Black;
+            }
+        }
+
+        private void sürücü_adı_girişi_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(sürücü_adı_girişi.Text))
+            {
+                sürücü_adı_girişi.Text = "Ad Soyad";
+                sürücü_adı_girişi.ForeColor = Color.Black;
+            }
+        }
+
+        private void ceza_tutarı_girişi_Enter(object sender, EventArgs e)
+        {
+            if (ceza_tutarı_girişi.Text == "Ceza Tutarı Giriniz")
+            {
+                ceza_tutarı_girişi.Text = "";
+                ceza_tutarı_girişi.ForeColor = Color.Black;
+            }
+        }
+
+        private void ceza_tutarı_girişi_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(ceza_tutarı_girişi.Text))
+            {
+                ceza_tutarı_girişi.Text = "Ceza Tutarı Giriniz";
+                ceza_tutarı_girişi.ForeColor = Color.Black;
+            }
+        }
+
+
 
         private void sürücü_ekle_Click(object sender, EventArgs e)
         {
@@ -157,6 +208,53 @@ namespace Trafik_Cezasi_Yonetimi
             }
         }
 
+        private void tüm_cezaları_öde_Click(object sender, EventArgs e)
+        {
+            var seciliSurucu = sürücüler_liste.SelectedItem as Surucu;
+            if (seciliSurucu == null) return;
+
+            foreach (var ceza in seciliSurucu.Cezalar)
+            {
+                ceza.OdemeYap();
+            }
+            sürücüler_liste_SelectedIndexChanged(null, null); // Listeyi güncelle
+        }
+
+        private void sürücüler_liste_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var seciliSurucu = sürücüler_liste.SelectedItem as Surucu;
+            if (seciliSurucu != null)
+            {
+                sürücünün_cezaları.DataSource = null;
+                sürücünün_cezaları.DataSource = seciliSurucu.Cezalar;
+                toplam_borç.Text = "Toplam Borç: " + seciliSurucu.ToplamBorc() + " TL";
+            }
+        }
+
+        private void sadece_ödenmemiş_checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            SurucununCezalariniListele();
+        }
+        private void SurucununCezalariniListele()
+        {
+            var seciliSurucu = sürücüler_liste.SelectedItem as Surucu;
+            if (seciliSurucu == null)
+            {
+                sürücünün_cezaları.DataSource = null;
+                return;
+            }
+
+            if (sadece_ödenmemiş_checkbox.Checked)
+            {
+                sürücünün_cezaları.DataSource = null;
+                sürücünün_cezaları.DataSource = seciliSurucu.Cezalar.Where(c => !c.OdendiMi).ToList();
+            }
+            else
+            {
+                sürücünün_cezaları.DataSource = null;
+                sürücünün_cezaları.DataSource = seciliSurucu.Cezalar;
+            }
+        }
     }
 }
 
