@@ -3,7 +3,8 @@
     public interface IOdenecek
     {
         void OdemeYap();
+        bool OdendiMi { get; }
+        decimal GetirTutar();
+        string RaporOlustur();
     }
 }
-
-// Yapılacak metodları implament etmek için buraya metdolar yazılacak!

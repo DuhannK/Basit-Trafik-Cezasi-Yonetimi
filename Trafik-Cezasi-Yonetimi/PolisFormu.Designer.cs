@@ -1,6 +1,6 @@
 ﻿namespace Trafik_Cezasi_Yonetimi
 {
-    partial class IOdenecekArayuz
+    partial class PolisFormu
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -30,20 +30,19 @@
         {
             this.sürücü_ekle = new System.Windows.Forms.Button();
             this.ceza_ekle = new System.Windows.Forms.Button();
-            this.ceza_öde = new System.Windows.Forms.Button();
             this.sürücü_adı_girişi = new System.Windows.Forms.TextBox();
             this.ceza_seçenek_seçimi = new System.Windows.Forms.ComboBox();
             this.ceza_tutarı_girişi = new System.Windows.Forms.TextBox();
             this.sürücüler_liste = new System.Windows.Forms.ListBox();
             this.sürücünün_cezaları = new System.Windows.Forms.DataGridView();
-            this.toplam_borç = new System.Windows.Forms.Label();
-            this.tüm_cezaları_öde = new System.Windows.Forms.Button();
-            this.sadece_ödenmemiş_checkbox = new System.Windows.Forms.CheckBox();
             this.OdendiMi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Surucu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tutar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tarih = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CezaTipi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toplam_borç = new System.Windows.Forms.Label();
+            this.btnCezayiSil = new System.Windows.Forms.Button();
+            this.btnAnaMenuyeDon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sürücünün_cezaları)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,16 +65,6 @@
             this.ceza_ekle.Text = "Ceza Ekle\n\n";
             this.ceza_ekle.UseVisualStyleBackColor = true;
             this.ceza_ekle.Click += new System.EventHandler(this.ceza_ekle_Click);
-            // 
-            // ceza_öde
-            // 
-            this.ceza_öde.Location = new System.Drawing.Point(468, 265);
-            this.ceza_öde.Name = "ceza_öde";
-            this.ceza_öde.Size = new System.Drawing.Size(147, 23);
-            this.ceza_öde.TabIndex = 2;
-            this.ceza_öde.Text = "Ceza Öde\n\n";
-            this.ceza_öde.UseVisualStyleBackColor = true;
-            this.ceza_öde.Click += new System.EventHandler(this.ceza_öde_Click);
             // 
             // sürücü_adı_girişi
             // 
@@ -118,6 +107,7 @@
             this.sürücüler_liste.Name = "sürücüler_liste";
             this.sürücüler_liste.Size = new System.Drawing.Size(192, 196);
             this.sürücüler_liste.TabIndex = 7;
+            this.sürücüler_liste.SelectedIndexChanged += new System.EventHandler(this.sürücüler_liste_SelectedIndexChanged_1);
             this.sürücüler_liste.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sürücüler_liste_MouseDoubleClick);
             // 
             // sürücünün_cezaları
@@ -140,37 +130,6 @@
             this.sürücünün_cezaları.Size = new System.Drawing.Size(726, 210);
             this.sürücünün_cezaları.TabIndex = 8;
             this.sürücünün_cezaları.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sürücünün_cezaları_CellContentClick);
-            // 
-            // toplam_borç
-            // 
-            this.toplam_borç.AutoSize = true;
-            this.toplam_borç.Location = new System.Drawing.Point(541, 291);
-            this.toplam_borç.Name = "toplam_borç";
-            this.toplam_borç.Size = new System.Drawing.Size(88, 16);
-            this.toplam_borç.TabIndex = 10;
-            this.toplam_borç.Text = "Toplam Borç:";
-            this.toplam_borç.Click += new System.EventHandler(this.toplam_borç_Click);
-            // 
-            // tüm_cezaları_öde
-            // 
-            this.tüm_cezaları_öde.Location = new System.Drawing.Point(612, 265);
-            this.tüm_cezaları_öde.Name = "tüm_cezaları_öde";
-            this.tüm_cezaları_öde.Size = new System.Drawing.Size(147, 23);
-            this.tüm_cezaları_öde.TabIndex = 11;
-            this.tüm_cezaları_öde.Text = "Tüm Cezaları Öde";
-            this.tüm_cezaları_öde.UseVisualStyleBackColor = true;
-            this.tüm_cezaları_öde.Click += new System.EventHandler(this.tüm_cezaları_öde_Click);
-            // 
-            // sadece_ödenmemiş_checkbox
-            // 
-            this.sadece_ödenmemiş_checkbox.AutoSize = true;
-            this.sadece_ödenmemiş_checkbox.Location = new System.Drawing.Point(830, 308);
-            this.sadece_ödenmemiş_checkbox.Name = "sadece_ödenmemiş_checkbox";
-            this.sadece_ödenmemiş_checkbox.Size = new System.Drawing.Size(151, 20);
-            this.sadece_ödenmemiş_checkbox.TabIndex = 12;
-            this.sadece_ödenmemiş_checkbox.Text = "Ödenmemiş Cezalar";
-            this.sadece_ödenmemiş_checkbox.UseVisualStyleBackColor = true;
-            this.sadece_ödenmemiş_checkbox.CheckedChanged += new System.EventHandler(this.sadece_ödenmemiş_checkbox_CheckedChanged);
             // 
             // OdendiMi
             // 
@@ -217,24 +176,53 @@
             this.CezaTipi.Visible = false;
             this.CezaTipi.Width = 125;
             // 
-            // IOdenecekArayuz
+            // toplam_borç
+            // 
+            this.toplam_borç.AutoSize = true;
+            this.toplam_borç.Location = new System.Drawing.Point(541, 291);
+            this.toplam_borç.Name = "toplam_borç";
+            this.toplam_borç.Size = new System.Drawing.Size(88, 16);
+            this.toplam_borç.TabIndex = 10;
+            this.toplam_borç.Text = "Toplam Borç:";
+            this.toplam_borç.Click += new System.EventHandler(this.toplam_borç_Click);
+            // 
+            // btnCezayiSil
+            // 
+            this.btnCezayiSil.Location = new System.Drawing.Point(501, 259);
+            this.btnCezayiSil.Name = "btnCezayiSil";
+            this.btnCezayiSil.Size = new System.Drawing.Size(175, 29);
+            this.btnCezayiSil.TabIndex = 11;
+            this.btnCezayiSil.Text = "Cezayı Sil";
+            this.btnCezayiSil.UseVisualStyleBackColor = true;
+            this.btnCezayiSil.Click += new System.EventHandler(this.btnCezayiSil_Click);
+            // 
+            // btnAnaMenuyeDon
+            // 
+            this.btnAnaMenuyeDon.Location = new System.Drawing.Point(13, 12);
+            this.btnAnaMenuyeDon.Name = "btnAnaMenuyeDon";
+            this.btnAnaMenuyeDon.Size = new System.Drawing.Size(140, 65);
+            this.btnAnaMenuyeDon.TabIndex = 12;
+            this.btnAnaMenuyeDon.Text = "Ana Menüye Dön";
+            this.btnAnaMenuyeDon.UseVisualStyleBackColor = true;
+            this.btnAnaMenuyeDon.Click += new System.EventHandler(this.btnAnaMenuyeDon_Click);
+            // 
+            // PolisFormu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 644);
-            this.Controls.Add(this.sadece_ödenmemiş_checkbox);
-            this.Controls.Add(this.tüm_cezaları_öde);
+            this.Controls.Add(this.btnAnaMenuyeDon);
+            this.Controls.Add(this.btnCezayiSil);
             this.Controls.Add(this.toplam_borç);
             this.Controls.Add(this.sürücünün_cezaları);
             this.Controls.Add(this.sürücüler_liste);
             this.Controls.Add(this.ceza_tutarı_girişi);
             this.Controls.Add(this.ceza_seçenek_seçimi);
             this.Controls.Add(this.sürücü_adı_girişi);
-            this.Controls.Add(this.ceza_öde);
             this.Controls.Add(this.ceza_ekle);
             this.Controls.Add(this.sürücü_ekle);
-            this.Name = "IOdenecekArayuz";
-            this.Text = "Form1";
+            this.Name = "PolisFormu";
+            this.Text = "PolisFormu";
             this.Load += new System.EventHandler(this.IOdenecekArayuz_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sürücünün_cezaları)).EndInit();
             this.ResumeLayout(false);
@@ -246,20 +234,19 @@
 
         private System.Windows.Forms.Button sürücü_ekle;
         private System.Windows.Forms.Button ceza_ekle;
-        private System.Windows.Forms.Button ceza_öde;
         private System.Windows.Forms.TextBox sürücü_adı_girişi;
         private System.Windows.Forms.ComboBox ceza_seçenek_seçimi;
         private System.Windows.Forms.TextBox ceza_tutarı_girişi;
         private System.Windows.Forms.ListBox sürücüler_liste;
         private System.Windows.Forms.DataGridView sürücünün_cezaları;
         private System.Windows.Forms.Label toplam_borç;
-        private System.Windows.Forms.Button tüm_cezaları_öde;
-        private System.Windows.Forms.CheckBox sadece_ödenmemiş_checkbox;
         private System.Windows.Forms.DataGridViewCheckBoxColumn OdendiMi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Surucu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tutar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tarih;
         private System.Windows.Forms.DataGridViewTextBoxColumn CezaTipi;
+        private System.Windows.Forms.Button btnCezayiSil;
+        private System.Windows.Forms.Button btnAnaMenuyeDon;
     }
 }
 

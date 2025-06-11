@@ -46,30 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnaMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnaMenu.Designer.cs">
+      <DependentUpon>AnaMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CezaTuru.cs" />
     <Compile Include="IOdenecek.cs" />
-    <Compile Include="Sınıf Dosyaları\Ceza.cs">
+    <Compile Include="KullaniciFormu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sınıf Dosyaları\HizCeza.cs">
+    <Compile Include="KullaniciFormu.Designer.cs">
+      <DependentUpon>KullaniciFormu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sınıf Dosyaları\Ceza.cs" />
+    <Compile Include="PolisFormu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IOdenecekArayuz.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IOdenecekArayuz.Designer.cs">
-      <DependentUpon>IOdenecekArayuz.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Sınıf Dosyaları\KirmiziIsikCeza.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sınıf Dosyaları\ParkCeza.cs">
-      <SubType>Form</SubType>
+    <Compile Include="PolisFormu.Designer.cs">
+      <DependentUpon>PolisFormu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sınıf Dosyaları\HizCeza.cs" />
+    <Compile Include="Sınıf Dosyaları\KirmiziIsikCeza.cs" />
+    <Compile Include="Sınıf Dosyaları\ParkCeza.cs" />
     <Compile Include="Sınıf Dosyaları\Surucu.cs" />
-    <EmbeddedResource Include="IOdenecekArayuz.resx">
-      <DependentUpon>IOdenecekArayuz.cs</DependentUpon>
+    <EmbeddedResource Include="AnaMenu.resx">
+      <DependentUpon>AnaMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KullaniciFormu.resx">
+      <DependentUpon>KullaniciFormu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PolisFormu.resx">
+      <DependentUpon>PolisFormu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

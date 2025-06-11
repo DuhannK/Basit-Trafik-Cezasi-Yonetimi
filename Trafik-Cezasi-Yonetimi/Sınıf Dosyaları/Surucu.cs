@@ -15,7 +15,6 @@ namespace Trafik_Cezasi_Yonetimi
             AdSoyad = adSoyad;
         }
 
-        // Toplam borç (ödenmemiş cezalar toplamı)
         public decimal ToplamBorc()
         {
             return Cezalar.Where(c => !c.OdendiMi).Sum(c => c.Tutar);
