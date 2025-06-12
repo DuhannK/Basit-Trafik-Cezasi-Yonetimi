@@ -52,7 +52,7 @@
     <Compile Include="AnaMenu.Designer.cs">
       <DependentUpon>AnaMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="CezaTuru.cs" />
+    <Compile Include="Sınıf Dosyaları\CezaTuru.cs" />
     <Compile Include="IOdenecek.cs" />
     <Compile Include="KullaniciFormu.cs">
       <SubType>Form</SubType>
