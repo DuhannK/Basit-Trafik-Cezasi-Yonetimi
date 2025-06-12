@@ -236,6 +236,11 @@ namespace Trafik_Cezasi_Yonetimi
         {
 
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
